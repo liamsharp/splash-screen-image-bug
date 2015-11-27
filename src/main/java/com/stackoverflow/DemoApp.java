@@ -1,5 +1,7 @@
 package com.stackoverflow;
 
+import java.awt.SplashScreen;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
@@ -22,6 +24,7 @@ public class DemoApp extends Application
         MenuBar menuBar = new MenuBar();
         Menu menuFile = new Menu("File");
         menuBar.getMenus().addAll(menuFile);
+
         menuBar.setUseSystemMenuBar(true);
         
         ((VBox) scene.getRoot()).getChildren().addAll(menuBar);
@@ -29,8 +32,18 @@ public class DemoApp extends Application
         stage.show();
     }
 
+    private static void closeSplashScreen()
+    {
+        final SplashScreen splash = SplashScreen.getSplashScreen();
+        if (splash != null) 
+        {
+            splash.close();
+        }
+    }
+
     public static void main( String[] args )
     {
+        closeSplashScreen();
         launch(args);
     }
 }
